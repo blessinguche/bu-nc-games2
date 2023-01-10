@@ -6,9 +6,14 @@ const api = axios.create({
 
 export async function getReviews() {
   const { data } = await api.get("/reviews");
-  const allItems = [...data.reviews];
-  console.log(allItems)
-  return allItems;
+  const reviews = [...data.reviews];
+  return reviews;
+};
+export async function getReviewsById(reviewId) {
+  let getUrl = `/reviews/${reviewId}`
+  const { data } = await api.get(getUrl);
+  const review = data.review;
+  return review;
 };
 
 export async function postItem(username, id) {
