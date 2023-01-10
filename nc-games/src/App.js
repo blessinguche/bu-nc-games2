@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 import "./styles/App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import {getReviews} from "./Utils"
+export async function getReviewsById({reviewId}) 
+// import {getReviews, getReviewById} from "./Utils"
 import Reviews from "./components/Reviews";
+import Review from "./components/Review";
+
 
 function App() {
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    getReviews().then((data) => setReviews(data));
-  }, []);
+  const [reviewsId, setReviewsId] = useState([]);
 
   return (
     <div className="App">
@@ -19,7 +18,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Header />} />
-        <Route path="/reviews" element={<Reviews {...reviews} />} />
+        <Route path="/reviews" element={<Reviews setReviewsId={setReviewsId} />} />
+        <Route path="/reviews/:review_id" element={<Review reviewsId={reviewsId}/>} />
         
         {/* <Route path="/*" element={<ErrorPage  />} /> */}
       </Routes>
