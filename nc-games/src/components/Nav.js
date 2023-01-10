@@ -12,10 +12,10 @@ export default function Nav() {
   }
 
   return (
-    <nav class={styles.topnav} id="myTopnav">
+    <nav className={styles.topnav} id="myTopnav">
       <Link to="/">Users</Link>
       <Link to="/">Type of Games</Link>
-      <Link to="/">Reviews</Link>
+      <Link to="/reviews">Reviews</Link>
       {/* <Link to="javascript:void(0);" class="icon" onclick={myFunction}>
         <i class="fa fa-bars"></i>
       </Link> */}
