@@ -5,7 +5,7 @@ export default function ReviewCard(review) {
   const linkUrl = `/review/${review.review_id}`;
   return (
     <li>
-      <Link to="/reviews/:review_id">
+      <Link to={`/reviews/:review_id=${review.review_id}`}>
         <h3 onClick={() => review.handleClick(review.review_id)}>
           {review.title}
         </h3>

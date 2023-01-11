@@ -6,7 +6,7 @@ const api = axios.create({
 
 export async function getReviews() {
   const { data } = await api.get("/reviews");
-  const reviews = [...data.reviews];
+  const reviews = data.reviews;
   return reviews;
 };
 export async function getReviewsById(reviewId) {
@@ -18,7 +18,7 @@ export async function getReviewsById(reviewId) {
 export async function getCommentsByReviewId(reviewId) {
   let getUrl = `/reviews/${reviewId}/comments`
   const { data } = await api.get(getUrl);
-  const comments = [data.comments];
+  const comments = data.comments;
   return comments;
 };
 
