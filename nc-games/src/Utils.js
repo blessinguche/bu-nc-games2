@@ -15,6 +15,12 @@ export async function getReviewsById(reviewId) {
   const review = data.review;
   return review;
 };
+export async function getCommentsByReviewId(reviewId) {
+  let getUrl = `/reviews/${reviewId}/comments`
+  const { data } = await api.get(getUrl);
+  const comments = [data.comments];
+  return comments;
+};
 
 export async function postItem(username, id) {
   try {

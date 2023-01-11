@@ -17,7 +17,7 @@ export default function Reviews({setReviewId}) {
   }
 
   return (
-    <ul id="item-list">
+    <ul id="reviews-list">
       {reviews.map((review) => {
         return <ReviewCard key={review.review_id} {...review} handleClick={handleClick} />;
       })}
