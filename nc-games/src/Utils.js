@@ -15,11 +15,25 @@ export async function getReviewsById(reviewId) {
   const review = data.review;
   return review;
 };
+
 export async function getCommentsByReviewId(reviewId) {
   let getUrl = `/reviews/${reviewId}/comments`
   const { data } = await api.get(getUrl);
   const comments = data.comments;
   return comments;
+};
+
+export async function addVotesByReviewId(reviewId) {
+  let patchUrl = `/reviews/${reviewId}`
+  const { data } = await api.patch(patchUrl, {"inc_votes": 1});
+  const votes = data.review.votes;
+  return votes;
+};
+export async function removeVotesByReviewId(reviewId) {
+  let patchUrl = `/reviews/${reviewId}`
+  const { data } = await api.patch(patchUrl, {"inc_votes": -1});
+  const votes = data.review.votes;
+  return votes;
 };
 
 export async function postItem(username, id) {
