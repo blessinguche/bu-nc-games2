@@ -4,11 +4,10 @@ import { getReviewsById, getCommentsByReviewId } from "../Utils";
 import CommentCard from "./CommentCard";
 import { addVotesByReviewId, removeVotesByReviewId, postComment } from "../Utils";
 
-export default function Review({ reviewId, setCommentId }) {
+export default function Review({ reviewId, setCommentId, isActive, setIsActive }) {
   const [review, setReview] = useState([]);
   const [comments, setComments] = useState([]);
   const [votes, setVotes] = useState(review.votes);
-  const [isActive, setIsActive] = useState(false);
   const [commentBody, setCommentBody] = useState("");
   const [newCommentBody, setNewCommentBody] = useState("");
 
@@ -18,7 +17,7 @@ export default function Review({ reviewId, setCommentId }) {
       setVotes(data.votes);
     });
     getCommentsByReviewId(reviewId).then((data) => setComments(data));
-  }, [reviewId]);
+  }, [reviewId, comments]);
 
   function handleVoteClick(id) {
     if (!isActive) {
@@ -34,7 +33,7 @@ export default function Review({ reviewId, setCommentId }) {
     setCommentBody(newCommentBody);
     console.log(commentBody)
     setNewCommentBody("");
-
+    postComment("grumpy19", reviewId, commentBody)
   }
 
   return (
@@ -55,7 +54,7 @@ export default function Review({ reviewId, setCommentId }) {
         <p>
           <lable>Add Comment:</lable>
         </p>
-        <input
+        <input style={{height: "50px", width: "400px"}}
           onChange={(e) => {
             setNewCommentBody(e.target.value);
             console.log();
@@ -64,9 +63,8 @@ export default function Review({ reviewId, setCommentId }) {
           type="text"
           value={newCommentBody}
           name="comment"
-        >
-        </input>
-        <br />
+        />
+        <br/>
         <input type="submit" value="Submit" />
       </form>
       <h3>Comments:</h3>

@@ -14,7 +14,7 @@ export default function Nav() {
   return (
     <nav className={styles.topnav} id="myTopnav">
       <Link to="/">Users</Link>
-      <Link to="/">Type of Games</Link>
+      <Link to="/categories">Type of Games</Link>
       <Link to="/reviews">Reviews</Link>
       {/* <Link to="javascript:void(0);" class="icon" onclick={myFunction}>
         <i class="fa fa-bars"></i>
