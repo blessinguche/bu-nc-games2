@@ -10,41 +10,42 @@ export async function getReviews() {
   return reviews;
 };
 export async function getReviewsById(reviewId) {
-  let getUrl = `/reviews/${reviewId}`
+  const getUrl = `/reviews/${reviewId}`
   const { data } = await api.get(getUrl);
   const review = data.review;
   return review;
 };
 
 export async function getCommentsByReviewId(reviewId) {
-  let getUrl = `/reviews/${reviewId}/comments`
+  const getUrl = `/reviews/${reviewId}/comments`
   const { data } = await api.get(getUrl);
   const comments = data.comments;
   return comments;
 };
 
 export async function addVotesByReviewId(reviewId) {
-  let patchUrl = `/reviews/${reviewId}`
+  const patchUrl = `/reviews/${reviewId}`
   const { data } = await api.patch(patchUrl, {"inc_votes": 1});
   const votes = data.review.votes;
   return votes;
 };
 export async function removeVotesByReviewId(reviewId) {
-  let patchUrl = `/reviews/${reviewId}`
+  const patchUrl = `/reviews/${reviewId}`
   const { data } = await api.patch(patchUrl, {"inc_votes": -1});
   const votes = data.review.votes;
   return votes;
 };
 
-export async function postItem(username, id) {
+export async function postComment(username, review_id, body) {
   try {
-    const res = await api.post(`/users/${username}/orders`, {
-      item_id: id
+    const res = await api.post(`/reviews/${review_id}/commentss`, {
+      username: username,
+      body: body
     });
-    if (!res.data.items.length) {
-      alert('Someone in the cohort has deleted all the bloomin\' items!!!');
+    if (res.data.comment === undefined) {
+      alert('No review');
     }
-    alert(res.data.item.item_name + ' added to basket!');
+    alert(res.data.comment.username + ' added to a comment!');
   } catch (err) {
     alert(err.response.status);
   }
