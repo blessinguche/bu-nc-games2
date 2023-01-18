@@ -4,15 +4,10 @@ const api = axios.create({
   baseURL: "https://blessing-games.onrender.com/api",
 });
 
-export async function getReviews(category = "none") {
+export async function getReviews(category = "none", ) {
   const { data } = await api.get("/reviews");
-  if (category === "none") {
-    const reviews = data.reviews;
-    return reviews;
-  } else {
-    const reviews = data.reviews.filter((review) => review.category === category)
-    return reviews;
-  }
+  const reviews = data.reviews;
+  return reviews;
 };
 export async function getReviewsById(reviewId) {
   const getUrl = `/reviews/${reviewId}`
@@ -62,11 +57,16 @@ export async function getCategories() {
   const categories = data.categories;
   return categories;
 };
-// export async function getReviewsByCategories() {
-//   const { data } = await api.get("/reviews");
-//   const reviews = data.reviews;
-//   return reviews;
-// };
+export async function getReviewsByCategories(category) {
+  const { data } = await api.get(`/reviews?category=${category}`);
+  const reviews = data.reviews;
+  return reviews;
+};
+export async function getsortedReviews(sort_by = 'asc') {
+  const { data } = await api.get(`/reviews?sort_by=${sort_by}`);
+  const reviews = data.reviews;
+  return reviews;
+};
 
 export async function getUserItems(username) {
   try {

@@ -47,7 +47,7 @@ function App() {
           element={<Categories setCategory={setCategory} />}
         />
         <Route
-          path={`/categories/category=${category}`}
+          path={`/reviews?category=${category}`}
           element={
             <Category
               category={category}
