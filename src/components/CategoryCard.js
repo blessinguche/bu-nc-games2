@@ -3,7 +3,7 @@ import styles from "../styles/CategoryCard.module.css";
 export default function CategoryCard(category) {
    return(
       <li>
-         <Link to={`/categories/category=${category.slug}`}>
+         <Link to={`/reviews?category=${category.slug}`}>
         <h3 onClick={() => category.handleClick(category.slug)}>
           {category.slug}
         </h3>

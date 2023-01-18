@@ -1,4 +1,4 @@
-import { getReviews } from "../Utils";
+import { getReviews, getReviewsByCategories } from "../Utils";
 import ReviewCard from "./ReviewCard";
 import { useEffect, useState } from "react";
 
@@ -11,10 +11,9 @@ export default function Category({
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getReviews(category).then((data) => setReviews(data));
+    getReviewsByCategories(category).then((data) => setReviews(data));
   }, [category]);
-
-  console.log(reviews);
+  
   function handleClick(id) {
     setReviewId(id);
   }

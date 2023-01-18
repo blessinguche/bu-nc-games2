@@ -16,19 +16,22 @@ export default function Reviews({ setReviewId, isActive, setIsActive }) {
   }
 
   return (
-    <ul id="reviews-list">
-      {reviews.map((review) => {
-        return (
-          <ReviewCard
-            key={review.review_id}
-            {...review}
-            handleClick={handleClick}
-            setReviewId={setReviewId}
-            isActive={isActive}
-            setIsActive={setIsActive}
-          />
-        );
-      })}
-    </ul>
+    <div>
+      
+      <ul id="reviews-list">
+        {reviews.map((review) => {
+          return (
+            <ReviewCard
+              key={review.review_id}
+              {...review}
+              handleClick={handleClick}
+              setReviewId={setReviewId}
+              isActive={isActive}
+              setIsActive={setIsActive}
+            />
+          );
+        })}
+      </ul>
+    </div>
   );
 }
