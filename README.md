@@ -6,4 +6,8 @@ Gamers INC has game reviews which are divided into categories. Each review has u
 
 ## Link to Hosted App
 
-Lin
+https://blessing-gamers-inc.netlify.app/
+
+run the api website before use: https://blessing-games.onrender.com/api
+
+## Cloning Repo
